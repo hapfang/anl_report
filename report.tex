@@ -1,0 +1,56 @@
+% To regenerate just the pdf $ make pdf
+% To regenerate everything, references, TOC, etc. $ make all
+\documentclass[11pt,letterpaper]{report}
+
+\input preambl
+\usepackage[toc,titletoc,title]{appendix}
+
+\renewcommand{\bibname}{References} %Heading for the Bibliography
+\renewcommand{\theabstract}{Summary} %Heading for the Abstract
+
+\title{Argonne National Laboratory Report Template} 
+
+\author[1]{First~Author}
+\author[1,2]{Second~Author}
+\author[3]{Third~Author}
+\author[1]{Fourth~Author}
+
+\affil[1]{Nuclear Science and Engineering Division, Argonne National Laboratory}
+\affil[2]{Dept. of Affil., Author the Second}
+\affil[3]{Another place where people do things}
+
+\publicationdate{August 19, 2022}
+\report_no{ANL/NSE-22/XX} %get a report number from PANDA
+
+\begin{document}
+
+%% =========
+
+\input intro
+\setcounter{section}{1}
+
+\input results
+
+\input concl
+
+\section*{Acknowledgments}
+\addcontentsline{toc}{section}{Acknowledgments}
+
+Argonne National Laboratory's work was supported by the U.S.\ Department of Energy, Office of Nuclear Energy, Nuclear Energy Advanced Modeling and Simulation (NEAMS) program, under contract DE-AC02-06CH11357. 
+
+%We gratefully acknowledge the computing resources provided on Bebop, a high-performance computing cluster operated by the Laboratory Computing Resource Center at Argonne National Laboratory.
+
+%We gratefully acknowledge computing resources provided by the NSE Division of Argonne National Laboratory.
+
+\bibliographystyle{NSE}
+%% =========
+\raggedright
+\bibliography{references}
+\addcontentsline{toc}{section}{\bibname}
+\clearpage
+
+%\begin{appendices} %not fully satisfied with the formatting here, but it's close enough. Fix it in the next report and integrate into mcs_pack.sty
+%\renewcommand{\thesection}{\Alph{section}}
+%\end{appendices}
+
+\end{document}

@@ -1,0 +1,86 @@
+\usepackage{graphicx}
+\graphicspath{{./figs/}}
+\usepackage{float}
+\usepackage{comment}
+\usepackage{amssymb,amsmath}
+\usepackage{rotating}
+\usepackage{tabularx}
+\usepackage{gensymb}
+\usepackage{placeins}
+\usepackage{multirow}
+\usepackage{pdfpages}
+
+%\usepackage{pdfpages}
+\usepackage{afterpage}
+
+%\usepackage{wrapfig}
+
+\usepackage{microtype}
+\usepackage{fullpage}
+
+\usepackage[normalem]{ulem}
+\usepackage{bm}  % Dillon
+\usepackage{caption} 
+\usepackage{subcaption} 
+
+%\usepackage{url}
+%\usepackage[hidelinks]{hyperref}
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = blue, %Colour of citations
+%  pdfborderstyle={/S/U/W 1} % border style will be underline of width 1pt
+}
+
+%%% epstopdf
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+   \pdffalse
+\else
+   \pdfoutput=1
+   \pdftrue
+\fi
+\ifpdf
+   \usepackage[update,prepend]{epstopdf}
+   \DeclareGraphicsRule{.eps}{pdf}{.pdf}{`epstopdf #1}
+   \pdfcompresslevel=9
+\fi
+%%%
+
+\usepackage{authblk}
+\usepackage{chngcntr}
+\usepackage{nse_pack}
+
+\DeclareGraphicsExtensions{.gif,.png,.jpg,.pdf,.tiff,.eps}	% pdflatex % .eps for pdf only w/ \epsfig? 
+
+\def\baselinestretch{1.0}
+\textwidth 6.5in
+\textheight 8.50in
+\topmargin -0.15in
+\oddsidemargin 0.0in
+\renewcommand{\topfraction}{.95}
+\renewcommand{\bottomfraction}{.95}
+\renewcommand{\textfraction}{.05}
+
+\newcommand{\vd}{\mathbf{\cdot}} % slightly bold vector dot
+\newcommand{\grad}{\vec\nabla}
+\renewcommand{\div}{\grad\vd}
+\newcommand{\tensor}[1]{\bm{\uline{#1}}}
+\newcommand{\fg}{{f\mkern-4mu g}}
+\newcommand{\hfg}{h\mkern-2.5mu _{\fg}}
+\newcommand{\pvec}[1]{\vec{#1}\mkern2mu\vphantom{#1}}
+\newcommand{\eff}{{e\mkern-2 mu f\mkern-4 mu f}}
+\newcommand{\para}[1]{\left ({#1}\right)}
+\newcommand{\brak}[1]{\left [{#1}\right]}
+\newcommand{\ktau}{$k$~--~$\tau$ }
+\newcommand{\komg}{$k$~--~$\omega$ }
+\newcommand{\keps}{$k$~--~$\varepsilon$ }
+
+\newcommand{\reffig}[1]{Figure~\ref{#1}}
+\newcommand{\reffigs}[2]{Figures~\ref{#1}~\&~\ref{#2}}
+\newcommand{\reffigr}[2]{Figures~\ref{#1}~--~\ref{#2}}
+\newcommand{\reftab}[1]{Table~\ref{#1}}
+\newcommand{\refeq}[1]{Eq.~(\ref{#1})}
+\newcommand{\refeqs}[2]{Eqs.~(\ref{#1}~\&~\ref{#2})}

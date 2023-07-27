@@ -1,0 +1,234 @@
+%%%% September 2013
+%% By Oana Marin, MCS
+%% the variables needed in this package are to be specified 
+%% in the mcs.tex file as
+%% \title{LES and RANS simulations of the ANL MAX \\experiment for various inlet boundary conditions}
+%% \author[1]{\rm Shashikant Aithal}
+%% \author[2]{\rm Paul Fischer}
+%% \author[1,2]{\rm James Lottes}
+%% \author[1]{\rm Aleks Obabko}
+%% \affil[1]{Argonne National Laboratory}
+%% \affil[2]{University of Chicago}
+%% \publicationdate{September 2013}
+%% \report_no{ANL/MCS-TM-335} 
+
+\ProvidesPackage{nse_pack}
+\RequirePackage{graphics}
+\RequirePackage{authblk}
+%\RequirePackage{textcomp}
+\RequirePackage{sectsty}
+\RequirePackage{setspace}
+%\RequirePackage{tocloft}
+%\RequirePackage[T1]{fontenc}
+\RequirePackage{helvet}
+\RequirePackage{bm}
+\RequirePackage{xfrac}
+\RequirePackage{hyphenat}
+\RequirePackage{pbox}
+
+\renewcommand{\Authfont}{\sf}
+\renewcommand{\Affilfont}{\sf}
+\renewcommand{\sfdefault}{phv}
+\newcommand{\theabstract}{Abstract}
+%\renewcommand{\cfttoctitlefont}{\sf\color{Hcolor}\LARGE\bfseries}
+
+\def\covertitle{\gdef\@mcs@covertitle}
+\def\coverauthor{\gdef\@mcs@coverauthor}
+\def\publicationdate{\gdef\@mcs@publicationdate}
+\def\groupname{\gdef\@mcs@groupname}
+\def\groupid{\gdef\@mcs@groupid}
+\def\authoremail{\gdef\@mcs@authoremail}
+\def\contactemail{\gdef\@mcs@contactemail}
+%\def\webpage{\gdef\@mcs@webpage}
+%\def\phone{\gdef\@mcs@phone}
+%\def\fax{\gdef\@mcs@fax}
+
+\definecolor{Hcolor}{rgb}{0.2,0.2,0.6}
+\allsectionsfont{\noindent\sf\color{Hcolor}\boldmath\textbf}
+
+\def\report_no{\gdef\@mcs@report_no}
+\def\departmentaddress{\gdef\@mcs@address}
+\@ifundefined{theauthor}
+  {\def\@mcs@coverauthor{\@author}}
+  {\def\@mcs@coverauthor{\theauthor}}
+\@ifundefined{thetitle}
+  {\def\@mcs@covertitle{\@title}}
+  {\def\@mcs@covertitle{\thetitle}}
+\@ifundefined{thedate}
+  {\def\@mcs@publicationdate{\@date}}
+  {\def\@mcs@publicationdate{\thedate}}
+\def\@mcs@authoremail{\PackageError{mcs_pack}
+  {\protect\authoremail\space not given}
+  {Please Read The Fine Manual.}}
+%\def\@mcs@groupname{\PackageError{mcs_pack}
+%  {\protect\groupname\space not given}
+%  {Please Read The Fine Manual.}}
+%\def\@mcs@webpage{http://www.mcs.anl.gov/}
+%\def\@mcs@phone{(865) 576-8401}
+%\def\@mcs@fax{(865) 576-5728}
+%\def\@mcs@email{reports@adonis.osti.gov }
+\def\@mcs@report_no{\PackageError{mcs_pack}
+  {\protect\report_no\space not given}
+  {Please Read The Fine Manual.}}
+%\def\@mcs@address{U.S. Department of Energy \\
+%	Office of Scientific and Technical Information \\
+%	P.O. Box 62 \\
+%	Oak Ridge, TN 37831-0062 \\}
+
+\newcommand{\figwidth}{0.8\textwidth}
+
+\let\@mcs@maketitle=\maketitle
+\def\maketitle{%
+  \sf
+  \begingroup
+  \pagenumbering{roman}
+  \thispagestyle{empty}
+  \noindent\hspace{-0.4in}\includegraphics{logo}
+  \hspace{\fill}
+  \raisebox{0.5in}{\Large\textbf{\@mcs@report_no}}
+  \par\bigskip
+  \vspace{120pt}
+% \begin{center}
+  \noindent{\pbox{469pt}{\raggedright\huge\textbf{\nohyphens{\@mcs@covertitle}}}} \\
+  \vspace{-3pt}\\
+  \rule{469pt}{1pt}
+% \end{center}
+  \vfill 
+  \noindent{\LARGE\textbf{Nuclear Science and Engineering Division}}
+  \vfill
+%  \begin{center}
+%  \Large \textbf{\@mcs@publicationdate}
+%  \end{center}
+  \newpage
+  \endgroup
+  \thispagestyle{empty}
+  \vfill
+  \clearpage
+  \footnotesize{\setstretch{1.1}
+  \vfill
+  \noindent\parbox{4.7in}{\textbf{About Argonne National Laboratory}\par
+  Argonne is a U.S. Department of Energy laboratory managed by UChicago Argonne, LLC under contract DE-AC02-06CH11357. The Laboratory's main facility is outside Chicago, at 9700 South Cass Avenue, Argonne, Illinois 60439. For information about Argonne and its pioneering science and technology programs, see www.anl.gov.}
+  \vfill
+  \noindent\textbf{\uppercase{ Document Availablity}}
+  \vskip 1em 
+     \parbox{4.7in-\parindent}{\textbf{Online Access:} U.S. Department of Energy (DOE) reports produced after 1991 and a growing number of pre-1991 documents are available free at OSTI.GOV (\textcolor{blue}{http://www.osti.gov/}), a service of the US Dept. of Energy's Office of Scientific and Technical Information.}  
+  \vskip 1.5em
+  \noindent\parbox{4.25in}{\textbf{Reports not in digital format may be purchased by the public from the National Technical Information Service (NTIS):}}
+  \vskip 0.5em
+  U.S. Department of Commerce\par
+  National Technical Information Service\par
+  5301 Shawnee Rd\par
+  Alexandria, VA 22312\par
+  \textbf{www.ntis.gov}\par
+  Phone: (800) 553-NTIS (6847) or (703) 605-6000\par
+  Fax: (703) 605-6900\par
+  Email: \textbf{orders@ntis.gov}
+  \vskip 1.5em
+  \noindent\parbox{4.25in}{\textbf{Reports not in digital format are available to DOE and DOE contractors from the Office of Scientific and Technical Information (OSTI):}}
+  \vskip 0.5em
+  U.S. Department of Energy\par
+  Office of Scientifice and Technical Information\par
+  P.O. Box 62\par
+  Oak Ridge, TN 37831-0062\par
+  \textbf{www.osti.gov}\par
+  Phone: (865) 576-8401\par
+  Fax: (865) 576-5728\par
+  Email: \textbf{reports@osti.gov}
+  }
+  \vfill
+  \scriptsize{
+  \noindent \textbf{Disclaimer} \par
+  \noindent This report was prepared as an account of work sponsored by an agency of the United States Government. Neither the United States Government nor any agency thereof, nor UChicago Argonne, LLC, nor any of their employees or officers, makes any warranty, express or implied, or assumes any legal liability or responsibility for the accuracy, completeness, or usefulness of any information, apparatus, 
+product, or process disclosed, or represents that its use would not infringe privately owned rights. Reference herein to any specific commercial product, process, or service by trade name, trademark, manufacturer, or otherwise, does not necessarily constitute or imply its endorsement, recommendation, or favoring by the United States Government or any agency thereof. The views and opinions of document authors expressed herein do not necessarily state or reflect those of the United States Government or any agency thereof, Argonne National Laboratory, or UChicago Argonne, LLC.}
+  \newpage
+  \thispagestyle{empty}
+  \pagenumbering{arabic}
+  \begin{flushright}
+     \textbf{\Large\@mcs@report_no}
+  \end{flushright}
+  \vfill
+  \noindent\textbf{\parbox{469pt}{\raggedright\Large\nohyphens{\@mcs@covertitle}}}\\
+  \vspace{-3pt}\\
+  \rule{469pt}{1pt}
+  \vfill
+  \noindent {\large prepared by} \par\bigskip
+  \noindent {\large\@mcs@coverauthor} \par
+  \vfill
+  {\large\@mcs@publicationdate}
+  \newpage      
+}
+
+\AtBeginDocument{
+
+\maketitle
+\clearpage
+\rm
+
+%\thispagestyle{empty}
+%\phantom{a}
+%\vspace{10em}
+%\begin{center}
+%{\small (This page intentionally left blank)}
+%\end{center}
+%\vfill
+%\addtocounter{page}{-1}
+%\clearpage
+
+\parskip   2ex
+\parindent 2em
+\normalsize
+\pagenumbering{roman}
+\section*{\centering{\theabstract}}
+\addcontentsline{toc}{section}{\theabstract}
+\input abstract
+\clearpage
+
+\parskip 1ex
+\thispagestyle{empty}
+\tableofcontents
+\addcontentsline{toc}{section}{Contents}
+\clearpage
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
+\clearpage
+\listoftables
+\addcontentsline{toc}{section}{List of Tables}
+\clearpage
+
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\counterwithout{section}{chapter}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\parskip 2ex
+}
+
+\let\@mcs@endpage=\endpage 
+\def\endpage{
+  \sf \parskip 0em
+  \clearpage
+  \begingroup
+  \thispagestyle{empty}
+% \noindent\hspace{-0.4in}\includegraphics{logo}
+  \noindent\includegraphics{logo}\par
+  \vskip 4em
+  \textbf{Nuclear Science and Engineering Division}\par
+  Argonne National Laboratory\par
+  9700 South Cass Avenue, Bldg. 208\par
+  Argonne, IL 60439\par
+  \vskip 1em
+  www.anl.gov\par
+  \vfill
+  \begin{picture}(0,0)(0,0)
+  \put(85,-10){\makebox(0,0){\includegraphics[width=2.5in]{doe}}}
+     \end{picture}
+  \endgroup
+  }
+
+\AtEndDocument{
+\newpage
+\endpage
+}
+    
+\endinput
